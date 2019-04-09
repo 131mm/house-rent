@@ -5,38 +5,38 @@
     <title>House-Rent</title>
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" >
     <style type="text/css">
-        body {font-size: 35px;  background: #ebebeb url('');padding-bottom: 30px;}
-		.navbar { min-height: 50px;background: #0697c7; color: #fff; padding: 20px; font-size: 55px; }
-        .content {padding:20px;}
-        .short {background: #28b; font-size:30px;padding: 1px; }
-        .btn-primary {background: #0697c7;padding: 20px 30px;border: 1px solid transparent;border-radius:10px; }
-        input { border: -2px; margin: -1px;padding: 12px;}
+        body {font-size: 35px;  background: #fafafa url('');padding-bottom: 30px;}
+        a {color: #000;}
+		.navbar { min-height: 50px;background: #069644; color: #fff; padding: 20px; font-size: 55px; }
+        .cont {padding:2px;}
+        .short { font-size:30px;padding: 1px; }
+        .btn-pr {background: #069644;padding: 20px 30px;border: 1px solid transparent;border-radius:10px; }
+        input { border: 1px solid #ccc; border-radius: 10px;margin: 0px;padding: 12px;}
         .info {margin: 10px;padding: 5px;}
         .jump { text-align: center;}
-        .jumpto { height: 80px;width: 200px; font-size: 80px;}
+        .jumpto { height: 80px;width: 200px; font-size: 35px;}
         .btn{border:1px solid transparent;color: #fff; background-color:#ec6;text-align:center;font-size:80px;} 
         
     </style>
 </head>
 <body>
     <div class="navbar">House-Rent</div>
-    <div class="table-head" >
+    <!-- <div class="table-head" >
         <span class="col-xs-10" >标题</span>
         <span class="col-xs-2">发布者</span>
-        <!-- <span class="col-xs-1">回复</span>
-        <span class="col-xs-3">最后时间</span> -->
+        <span class="col-xs-1">回复</span>
+        <span class="col-xs-3">最后时间</span>
+    </div> -->
+    <div id="cont">
+        
     </div>
-    <div id="cont"></div>
     
     
-<div class="Next">
-    <span>当前页：</span>
-    <span id="page_now"></span>
-    <button class="btn-primary"  onclick="next()" >下一页</button>
-</div>
-<div class="jump">
-    <input class="jumpto" name="page">
-    <button class="btn-primary"  onclick="jump()" ><a href="#" style="color: #fff" >Go</a></button>
+<div class="Next" style="clear:both; text-align: center;">
+    <span id="page_now" style="display:none;"></span>
+    <button class="btn-pr"  onclick="next()" >下一页</button>
+    <input class="jumpto" name="page" placeholder="跳转">
+    <button class="btn-pr"  onclick="jump()" ><a href="#">Go</a></button>
 </div>
 
 <footer>
@@ -52,8 +52,8 @@
         {{for item}}
         <div class="col-xs-12 info">
             <div class="short">
-                <span class="col-xs-10"><a href="{{:url}}">{{:titlet}}</a></span>
-                <span class="col-xs-2"><a href="{{:user_url}}">{{:user}}</a></span>
+                <span class="col-xs-9"><a href="{{:url}}">{{:titlet}}</a></span>
+                <span class="col-xs-3"><a href="{{:user_url}}">{{:user}}</a></span>
                 <!-- <span class="col-xs-1">{{:views}}</span>
                 < <span class="col-xs-3">{{:time}}</span> -->
             </div>
