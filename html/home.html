@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>House-Rent</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" >
+    <style type="text/css">
+        body {font-size: 35px;  background: #ebebeb url('');padding-bottom: 30px;}
+		.navbar { min-height: 50px;background: #0697c7; color: #fff; padding: 20px; font-size: 55px; }
+        .content {padding:20px;}
+        .short {background: #28b; font-size:30px;padding: 1px; }
+        .btn-primary {background: #0697c7;padding: 20px 30px;border: 1px solid transparent;border-radius:10px; }
+        input { border: -2px; margin: -1px;padding: 12px;}
+        .info {margin: 10px;padding: 5px;}
+        .jump { text-align: center;}
+        .jumpto { height: 80px;width: 200px; font-size: 80px;}
+        .btn{border:1px solid transparent;color: #fff; background-color:#ec6;text-align:center;font-size:80px;} 
+        
+    </style>
+</head>
+<body>
+    <div class="navbar">House-Rent</div>
+    <div class="table-head" >
+        <span class="col-xs-10" >标题</span>
+        <span class="col-xs-2">发布者</span>
+        <!-- <span class="col-xs-1">回复</span>
+        <span class="col-xs-3">最后时间</span> -->
+    </div>
+    <div id="cont"></div>
+    
+    
+<div class="Next">
+    <span>当前页：</span>
+    <span id="page_now"></span>
+    <button class="btn-primary"  onclick="next()" >下一页</button>
+</div>
+<div class="jump">
+    <input class="jumpto" name="page">
+    <button class="btn-primary"  onclick="jump()" ><a href="#" style="color: #fff" >Go</a></button>
+</div>
+
+<footer>
+    <div>
+        <span style="text-align: center;display:block;">&copy;  - <a href="https://github.com/131mm/moxing"> 131mm</a></span>
+    </div>
+</footer>
+<div>
+    
+</div>
+<script type="text/x-jsrender" id="Tmpl">
+    <div class="content">
+        {{for item}}
+        <div class="col-xs-12 info">
+            <div class="short">
+                <span class="col-xs-10"><a href="{{:url}}">{{:titlet}}</a></span>
+                <span class="col-xs-2"><a href="{{:user_url}}">{{:user}}</a></span>
+                <!-- <span class="col-xs-1">{{:views}}</span>
+                < <span class="col-xs-3">{{:time}}</span> -->
+            </div>
+        </div>
+        {{/for}}
+    </div>   
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jsrender/1.0.2/jsrender.min.js"></script>
+
+<script>
+    function load(page){
+        var url = '/info?page='+page;
+        $.get(url, function (data) {
+            var myhtml = $("#Tmpl").render(data);
+            $("#cont").html(myhtml);
+        })
+    };
+    function jump(){
+        var page = $('.jumpto').val();
+        load(page);
+    };
+    function next(){
+        var page = $("#page_now").text();
+        page = Number(page)+1;
+        var url = '/info?page='+page;
+        $.get(url, function (data) {
+            var myhtml = $("#Tmpl").render(data);
+            $("#cont").append(myhtml);
+            $("#page_now").text(page);
+        })
+    };
+    load(1);
+    $("#page_now").text(1);
+
+</script>
+
+</body>
+</html>
